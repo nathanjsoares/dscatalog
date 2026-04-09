@@ -1,7 +1,8 @@
 package com.devsuperior.dscatalog;
 
 import com.devsuperior.dscatalog.services.S3Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,8 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DscatalogApplication implements CommandLineRunner{
 
-	@Autowired
-	S3Service s3Service;
+	private static Logger LOG = LoggerFactory.getLogger(S3Service.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(DscatalogApplication.class, args);
@@ -18,6 +18,6 @@ public class DscatalogApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		s3Service.uploadFile("C:\\Temp\\test.jpg");
+		LOG.info("Start");
 	}
 }
